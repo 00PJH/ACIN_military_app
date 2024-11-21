@@ -4,11 +4,9 @@ import pandas as pd
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
-def load_csv_tokenizer(input_data_path):
+def load_csv_tokenizer(input_data):
     # Load the modified CSV file
-    file_path = input_data_path
-    df_new = pd.read_csv(file_path)
-
+    df_new = input_data
     
     # Load the saved model and tokenizer
     model_name = "00PJH/klue-bert-tunning-classification-military-news"
@@ -17,7 +15,7 @@ def load_csv_tokenizer(input_data_path):
     model.to(device)
     model.eval()
 
-    tokenize_encode(df_new, tokenizer,model)
+    return df_new, tokenizer,model
 
 def tokenize_encode(df_new, tokenizer, model):
     # Tokenize and encode the titles from the new CSV
@@ -27,7 +25,7 @@ def tokenize_encode(df_new, tokenizer, model):
     attention_mask = encoded_data['attention_mask'].to(device)
 
     
-    perform_inference(model, input_ids, attention_mask, df_new)
+    return model, input_ids, attention_mask, df_new
 
 def perform_inference(model, input_ids, attention_mask, df_new):
     with torch.no_grad():
@@ -39,3 +37,10 @@ def perform_inference(model, input_ids, attention_mask, df_new):
     df_new['predictions'] = predictions  # Add predictions to the DataFrame
 
     return df_new
+
+def run(input_data):
+    df_tk_md = load_csv_tokenizer(input_data)
+    encode = tokenize_encode(df_tk_md[0], df_tk_md[1], df_tk_md[2])
+    result_df = perform_inference(encode[0],encode[1],encode[2],encode[3])
+
+    return result_df
