@@ -4,7 +4,7 @@ from classification_title import load_csv_tokenizer, tokenize_encode, perform_in
 
 # 파일 이름 지정
 today = date.today()
-str_today = str(today.year) + str(today.month)  + str(today.day-1)
+str_today = str(today.year) + str(today.month)  + str(today.day)
 input_file_path = ("NewsResult" + "_" + str_today + "-" + str_today  + ".xlsx")
 
 # 1. extract only title
