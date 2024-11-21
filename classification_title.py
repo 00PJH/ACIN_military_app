@@ -43,4 +43,5 @@ def run(input_data):
     encode = tokenize_encode(df_tk_md[0], df_tk_md[1], df_tk_md[2])
     result_df = perform_inference(encode[0],encode[1],encode[2],encode[3])
 
-    return result_df
+    filtered_df = result_df[result_df['predictions'] == 1]
+    return filtered_df
