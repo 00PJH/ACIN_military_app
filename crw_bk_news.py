@@ -25,7 +25,7 @@ def crw_bk_title_text_url(input_url):
         try:
             title = article.find_element(By.CSS_SELECTOR, "strong.title").text
             summary = article.find_element(By.CSS_SELECTOR, "p.text").text
-            link = article.find_element(By.CSS_SELECTOR, "a").get_attribute("href")
+            link = article.find_element(By.CSS_SELECTOR, "div.info").find_element(By.CSS_SELECTOR, "a").get_attribute("href")
         except Exception as e:
             title, summary, link = "N/A", "N/A", "N/A"
 
@@ -38,36 +38,36 @@ def crw_bk_title_text_url(input_url):
     # 드라이버 종료
     driver.quit()
 
-def add_data():
-    db = pymysql.connect(
-        host = 'localhost',
-        user = 'root',
-        password = '1514',
-        port = 3306,
-        db = 'acin_news_app',
-        charset = 'utf8'
-    )
+# def add_data():
+#     db = pymysql.connect(
+#         host = 'localhost',
+#         user = 'root',
+#         password = '1514',
+#         port = 3306,
+#         db = 'acin_news_app',
+#         charset = 'utf8'
+#     )
 
-    df = result_data(create_bk_news_data_name())
+#     df = result_data(create_bk_news_data_name())
 
-    try:
-        with db.cursor() as cursor:
-            for _, row in df.iterrows():
+#     try:
+#         with db.cursor() as cursor:
+#             for _, row in df.iterrows():
 
-                title = row['title'] if pd.notna(row['title']) else None
-                url = row['URL'] if pd.notna(row['URL']) else None
-                predictions = row['predictions']
+#                 title = row['title'] if pd.notna(row['title']) else None
+#                 url = row['URL'] if pd.notna(row['URL']) else None
+#                 predictions = row['predictions']
 
-                sql = """
-                    INSERT INTO classification (title, URL, predictions)
-                    VALUES (%s, %s, %s)
-                """
-                cursor.execute(sql, (title, url, predictions))
-            db.commit()
+#                 sql = """
+#                     INSERT INTO classification (title, URL, predictions)
+#                     VALUES (%s, %s, %s)
+#                 """
+#                 cursor.execute(sql, (title, url, predictions))
+#             db.commit()
 
-            print("Data inserted successfully!")
-    finally:
-        db.close()
+#             print("Data inserted successfully!")
+#     finally:
+#         db.close()
 
 url = "https://www.bigkinds.or.kr/v2/news/recentNews.do"
 crw_bk_title_text_url(url)
