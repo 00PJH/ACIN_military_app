@@ -1,7 +1,10 @@
 import pymysql
 import pandas as pd
-from bigkinds_row_modify import create_bk_news_data_name,extract_title, classificatin_titles,result_data
+from bigkinds_row_modify import create_bk_news_data_name,extract_title_text_url, classificatin_titles,result_data
 
+
+import torch
+torch.cuda.empty_cache()
 
 def add_data():
     db = pymysql.connect(
@@ -14,6 +17,7 @@ def add_data():
     )
 
     df = result_data(create_bk_news_data_name())
+    
 
     try:
         with db.cursor() as cursor:

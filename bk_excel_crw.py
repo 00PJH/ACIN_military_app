@@ -51,6 +51,7 @@ try:
     time.sleep(3)  # 로그인 처리가 완료될 때까지 잠시 대기
     driver.get("https://www.bigkinds.or.kr/v2/news/index.do")
 
+
     print("로그인 및 복귀 완료")
 
 except Exception as e:
@@ -148,7 +149,7 @@ try:
     driver.execute_script("arguments[0].click();", button)
     
     print("엑셀 다운로드 버튼 클릭 성공")
-    time.sleep(20)
+    time.sleep(22)
 except Exception as e:
     print(f"엑셀 다운로드 버튼 클릭 오류: {e}")
 
@@ -162,13 +163,13 @@ finally:
     file_path = '/home/pjh/Downloads/' + file_name
     start_time = time.time()
     
-    while time.time() - start_time < 5:
-        if os.path.exists(file_path):
-            print(f"파일이 존재합니다: {file_path}")
-            driver.quit()
-            time.sleep(1)  # 1초 대기 후 재확인
+    # while time.time() - start_time < 5:
+    #     if os.path.exists(file_path):
+    #         print(f"파일이 존재합니다: {file_path}")
+    #         driver.quit()
+    #         time.sleep(1)  # 1초 대기 후 재확인
            
-        else :
-            print(f"파일이 존재하지 않습니다: {file_path}")
+    #     else :
+    #         print(f"파일이 존재하지 않습니다: {file_path}")
             
     

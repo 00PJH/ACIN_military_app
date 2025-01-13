@@ -9,9 +9,9 @@ model = BartForConditionalGeneration.from_pretrained("EbanLee/kobart-summary-v3"
 
 def newSum(text):
     # Encoding
-    input_text = text['본문'].tolist()
+    
 
-    inputs = tokenizer(input_text, return_tensors="pt", padding="max_length", truncation=True, max_length=1026)
+    inputs = tokenizer(text, return_tensors="pt", padding="max_length", truncation=True, max_length=1026)
 
     # Generate Summary Text Ids
     summary_text_ids = model.generate(
@@ -34,7 +34,7 @@ def newSum(text):
         no_repeat_ngram_size=5,   # 반복되지 않도록 할 n-그램 크기 조정
         )
 
-    # Decoding Text Ids
+    # # Decoding Text Ids
     # print(tokenizer.decode(summary_text_ids[0], skip_special_tokens=True))
     return tokenizer.decode(summary_text_ids[0], skip_special_tokens=True)
 
