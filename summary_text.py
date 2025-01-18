@@ -7,8 +7,6 @@ model = BartForConditionalGeneration.from_pretrained("EbanLee/kobart-summary-v3"
 
 def newSum(text):
     # Encoding
-    
-
     inputs = tokenizer(text, return_tensors="pt", padding="max_length", truncation=True, max_length=1026)
 
     # Generate Summary Text Ids

@@ -4,6 +4,7 @@ from save_data_db import add_data
 from bk_excel_crw import crw_news_excel
 from bigkinds_row_modify import create_bk_news_data_name
 
+
 def delete_file(file_path):
     """
     지정된 파일을 삭제하는 함수.

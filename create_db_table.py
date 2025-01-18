@@ -8,7 +8,6 @@ db = pymysql.connect(
         db = 'acin',
         charset = 'utf8'
     )
-
 cursor = db.cursor()
 
 sql = '''

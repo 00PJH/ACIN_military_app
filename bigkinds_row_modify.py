@@ -44,14 +44,12 @@ def result_data(input_data_path):
 
     news_text_list = result_title['본문'].to_list()
 
-   
      # 1부터 시작하여 총 개수까지 index 재배열
     result_title.index = range(len(result_title))
 
     for idx, e in enumerate(news_text_list):
         result_title.at[idx, '본문'] = newSum(e)
-           
-
+    
     print("summary text")
     # return dataFrame object -> title, prediction
     return result_title

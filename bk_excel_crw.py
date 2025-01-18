@@ -52,7 +52,6 @@ def crw_news_excel():
         time.sleep(3)  # 로그인 처리가 완료될 때까지 잠시 대기
         driver.get("https://www.bigkinds.or.kr/v2/news/index.do")
 
-
         print("로그인 및 복귀 완료")
 
     except Exception as e:
