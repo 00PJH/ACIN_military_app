@@ -3,9 +3,6 @@ import pandas as pd
 from bigkinds_row_modify import create_bk_news_data_name,extract_title_text_url, classificatin_titles,result_data
 
 
-import torch
-torch.cuda.empty_cache()
-
 def add_data():
     db = pymysql.connect(
         host = 'localhost',
@@ -44,4 +41,4 @@ def add_data():
 
 
 # bk_news excel file -> title, predictions, url-> classification -> add data & commit db
-add_data()
+

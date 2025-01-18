@@ -26,7 +26,8 @@ def extract_title_text_url(file_path):
 
     ### 테스트용 50개 추출
     df_test = df_titles_texts_URL.head(50)
-    return df_titles_texts_URL
+    print("extract title, text, url")
+    return df_test
 
     # return df_titles_texts_URL
 
@@ -34,6 +35,7 @@ def extract_title_text_url(file_path):
 def classificatin_titles(input_df):
     prediction_titles = run(input_df)
 
+    print("classification title")
     return prediction_titles
 
 # 3. run module
@@ -50,5 +52,6 @@ def result_data(input_data_path):
         result_title.at[idx, '본문'] = newSum(e)
            
 
+    print("summary text")
     # return dataFrame object -> title, prediction
     return result_title
