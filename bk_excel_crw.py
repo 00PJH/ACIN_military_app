@@ -7,7 +7,6 @@ from datetime import datetime, date
 import os
 import time
 
-
 def crw_news_excel():
     # Selenium WebDriver 설정 (ChromeDriver 경로를 생략)
     driver = webdriver.Chrome()

@@ -24,10 +24,10 @@ def extract_title_text_url(file_path):
     df_titles_texts_URL = df[['제목','본문','URL']]
     df_titles_texts_URL = df_titles_texts_URL.rename(columns={'제목':'title'})
 
-    ### 테스트용 50개 추출
-    df_test = df_titles_texts_URL.head(50)
+    # ### 테스트용 50개 추출
+    # df_test = df_titles_texts_URL.head(50)
     print("extract title, text, url")
-    return df_test
+    return df_titles_texts_URL
 
     # return df_titles_texts_URL
 

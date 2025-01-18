@@ -1,7 +1,5 @@
 from transformers import PreTrainedTokenizerFast, BartForConditionalGeneration
 
-
-
 # Load Model and Tokenizer
 tokenizer = PreTrainedTokenizerFast.from_pretrained("EbanLee/kobart-summary-v3")
 model = BartForConditionalGeneration.from_pretrained("EbanLee/kobart-summary-v3")

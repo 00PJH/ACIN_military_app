@@ -2,7 +2,6 @@ import pymysql
 import pandas as pd
 from bigkinds_row_modify import create_bk_news_data_name,extract_title_text_url, classificatin_titles,result_data
 
-
 def add_data():
     db = pymysql.connect(
         host = 'localhost',
