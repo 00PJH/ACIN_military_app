@@ -12,7 +12,7 @@ def add_data():
         user = 'root',
         password = '1514',
         port = 3306,
-        db = 'acin_news_app',
+        db = 'acin',
         charset = 'utf8'
     )
 
@@ -24,14 +24,18 @@ def add_data():
             for _, row in df.iterrows():
 
                 title = row['title'] if pd.notna(row['title']) else None
+                text = row['본문'] if pd.notna(row['본문']) else None
                 url = row['URL'] if pd.notna(row['URL']) else None
-                predictions = row['predictions']
+                
 
                 sql = """
-                    INSERT INTO classification (title, URL, predictions)
+                    INSERT INTO news (title, text, URL)
                     VALUES (%s, %s, %s)
+                    ON DUPLICATE KEY UPDATE
+                        text = VALUES(text),
+                        URL = VALUES(URL)
                 """
-                cursor.execute(sql, (title, url, predictions))
+                cursor.execute(sql, (title, text, url))
             db.commit()
 
             print("Data inserted successfully!")

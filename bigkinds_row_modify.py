@@ -26,7 +26,7 @@ def extract_title_text_url(file_path):
 
     ### 테스트용 50개 추출
     df_test = df_titles_texts_URL.head(50)
-    return df_test
+    return df_titles_texts_URL
 
     # return df_titles_texts_URL
 

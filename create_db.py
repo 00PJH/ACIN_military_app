@@ -5,17 +5,17 @@ db = pymysql.connect(
         user = 'root',
         password = '1514',
         port = 3306,
-        db = 'acin_news_app',
+        db = 'acin',
         charset = 'utf8'
     )
 
 cursor = db.cursor()
 
 sql = '''
-    CREATE TABLE classification(
+    CREATE TABLE news(
         title varchar(100) ,
-        URL TEXT,
-        predictions tinyint,
+        text VARCHAR(300),
+        URL VARCHAR(200),
         PRIMARY KEY(title)
     )
 '''

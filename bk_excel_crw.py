@@ -163,13 +163,13 @@ finally:
     file_path = '/home/pjh/Downloads/' + file_name
     start_time = time.time()
     
-    # while time.time() - start_time < 5:
-    #     if os.path.exists(file_path):
-    #         print(f"파일이 존재합니다: {file_path}")
-    #         driver.quit()
-    #         time.sleep(1)  # 1초 대기 후 재확인
+    while time.time() - start_time < 5:
+        if os.path.exists(file_path):
+            print(f"파일이 존재합니다: {file_path}")
+            driver.quit()
+            time.sleep(1)  # 1초 대기 후 재확인
            
-    #     else :
-    #         print(f"파일이 존재하지 않습니다: {file_path}")
+        else :
+            print(f"파일이 존재하지 않습니다: {file_path}")
             
     
