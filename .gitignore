@@ -1,0 +1,20 @@
+# 압축 파일 제외
+ACIN_classification_militaryNews_app.zip
+
+# 특정 확장자 파일 제외
+NewsResult_*.csv
+NewsResult_*.xlsx
+
+# Python 캐시 파일 및 디렉토리 제외
+__pycache__/
+
+# 가상 환경 관련 디렉토리 제외
+bin/
+lib/
+lib64/
+pyvenv.cfg
+share/
+
+# 기타 제외
+
+
