@@ -3,13 +3,25 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.chrome.options import Options
 from datetime import datetime, date
 import os
 import time
 
 def crw_news_excel():
-    # Selenium WebDriver 설정 (ChromeDriver 경로를 생략)
-    driver = webdriver.Chrome()
+    
+    # Selenium WebDriver 설정 (Headless Mode 추가)
+    chrome_options = Options()
+    chrome_options.add_argument("--headless")  # GUI 없이 실행
+    chrome_options.add_argument("--no-sandbox")  # 샌드박스 비활성화
+    chrome_options.add_argument("--disable-dev-shm-usage")  # /dev/shm 공간 문제 해결
+    chrome_options.add_argument("--disable-gpu")  # GPU 비활성화 (Linux에서 권장)
+    chrome_options.add_argument("--window-size=1920,1080")  # 가상 브라우저 크기 설정
+
+    driver = webdriver.Chrome(options=chrome_options)
+
+    
+    # driver = webdriver.Chrome()
     driver.maximize_window()
 
     # URL 열기
@@ -149,7 +161,7 @@ def crw_news_excel():
         driver.execute_script("arguments[0].click();", button)
         
         print("엑셀 다운로드 버튼 클릭 성공")
-        time.sleep(22)
+        time.sleep(30)
     except Exception as e:
         print(f"엑셀 다운로드 버튼 클릭 오류: {e}")
 
@@ -172,4 +184,3 @@ def crw_news_excel():
             else :
                 print(f"파일이 존재하지 않습니다: {file_path}")
             
-    
