@@ -2,10 +2,10 @@ import pymysql
 
 db = pymysql.connect(
         host = 'localhost',
-        user = 'root',
+        user = 'pjh',
         password = '1514',
         port = 3306,
-        db = 'acin',
+        db = 'military_app',
         charset = 'utf8'
     )
 cursor = db.cursor()

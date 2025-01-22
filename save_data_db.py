@@ -5,10 +5,10 @@ from bigkinds_row_modify import create_bk_news_data_name,extract_title_text_url,
 def add_data():
     db = pymysql.connect(
         host = 'localhost',
-        user = 'root',
+        user = 'pjh',
         password = '1514',
         port = 3306,
-        db = 'acin',
+        db = 'military_app',
         charset = 'utf8'
     )
     df = result_data(create_bk_news_data_name())
