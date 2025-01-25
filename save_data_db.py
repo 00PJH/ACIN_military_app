@@ -13,6 +13,7 @@ def add_data():
     )
     df = result_data(create_bk_news_data_name())
     
+    
     try:
         with db.cursor() as cursor:
             for _, row in df.iterrows():

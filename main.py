@@ -24,14 +24,17 @@ def execute_periodically():
     crw_news_excel 실행 -> 파일 삭제 -> add_data 실행을 1분 간격으로 반복.
     처음 루프에서는 파일 삭제를 생략.
     """
-    first_execution = True  # 처음 실행 여부를 판단하는 변수
+    
 
     while True:
         try:
-            if not first_execution:
-                # 처음 실행이 아닌 경우 파일 삭제
-                file_path = create_bk_news_data_name()
-                print(f"삭제 대상 파일 경로: {file_path}")
+            # 파일 경로 생성
+            file_path = create_bk_news_data_name()
+            print(f"확인 대상 파일 경로: {file_path}")
+
+            # 파일이 존재하면 삭제
+            if os.path.exists(file_path):
+                print(f"파일이 존재합니다. 삭제를 진행합니다: {file_path}")
                 delete_file(file_path)
 
             # 1. crw_news_excel 실행
@@ -50,9 +53,13 @@ def execute_periodically():
         except Exception as e:
             print(f"작업 중 오류 발생: {e}")
 
-       # 6시간 대기
-        print("6시간 대기 시작...")
-        time.sleep(6 * 60 * 60)  # 6시간 = 21600초
+        # 3분분 대기
+        print("3분 대기 시작...")
+        time.sleep(3 * 60)  # 6시간 = 21600초
+
+    #    # 6시간 대기
+    #     print("6시간 대기 시작...")
+    #     time.sleep(6 * 60 * 60)  # 6시간 = 21600초
 
 # 실행
 if __name__ == "__main__":
