@@ -53,13 +53,13 @@ def execute_periodically():
         except Exception as e:
             print(f"작업 중 오류 발생: {e}")
 
-        # 3분분 대기
-        print("3분 대기 시작...")
-        time.sleep(3 * 60)  # 6시간 = 21600초
+        # # 10분 대기
+        # print(" 10분 대기 시작...")
+        # time.sleep(10 * 60)  # 6시간 = 21600초
 
-    #    # 6시간 대기
-    #     print("6시간 대기 시작...")
-    #     time.sleep(6 * 60 * 60)  # 6시간 = 21600초
+       # 6시간 대기
+        print("6시간 대기 시작...")
+        time.sleep(6 * 60 * 60)  # 6시간 = 21600초
 
 # 실행
 if __name__ == "__main__":
